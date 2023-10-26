@@ -1,48 +1,66 @@
 import Card from '../../components/Card'
-import DefaultPicture from './../../assets/profile.png'
 import styled from 'styled-components'
-
-const freelanceProfiles = [
-    {
-        name: 'Jane Doe',
-        jobTitle: 'Designer',
-        picture: DefaultPicture
-    },
-    {
-        name: 'John Doe',
-        jobTitle: 'Developpeur',
-        picture: DefaultPicture
-    },
-    {
-        name: 'Jeanne Biche',
-        jobTitle: 'Fullstack',
-        picture: DefaultPicture
-    },
-]
+import colors from '../../utils/style/colors'
 
 const CardsContainer = styled.div`
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 350px 350px;
+  display: grid;
+  gap: 24px;
+  grid-template-rows: 350px 350px;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
 `
 
+const PageTitle = styled.h1`
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  padding-bottom: 30px;
+`
+
+const PageSubtitle = styled.h2`
+  text-align: center;
+  color: ${colors.secondary};
+  font-size: 20px;
+  font-weight: 300;
+  padding-bottom: 30px;
+`
+
+
+
+const freelanceProfiles = [
+  {
+    name: 'Jane Doe',
+    jobTitle: 'Devops',
+  },
+  {
+    name: 'John Doe',
+    jobTitle: 'Developpeur frontend',
+  },
+  {
+    name: 'Jeanne Biche',
+    jobTitle: 'Développeuse Fullstack',
+  },
+]
+
 function Freelances() {
-    return (
-        <div>
-            <h1>Freelance</h1>
-            <CardsContainer>
-            {freelanceProfiles.map((profile, index) => (
-                <Card
-                    key={`${profile.name}-${index}`}
-                    label={profile.jobTitle}
-                    picture={profile.picture}
-                    title={profile.name}
-                />
-            ))}
-            </CardsContainer>
-        </div>
-    )
+  return (
+    <div>
+      <PageTitle>Trouvez votre prestataire</PageTitle>
+      <PageSubtitle>
+        Chez Shiny nous réunissons les meilleurs profils pour vous.
+      </PageSubtitle>
+      <CardsContainer>
+        {freelanceProfiles.map((profile, index) => (
+          <Card
+            key={`${profile.name}-${index}`}
+            label={profile.jobTitle}
+            title={profile.name}
+          />
+        ))}
+      </CardsContainer>
+    </div>
+  )
 }
 
 export default Freelances
